@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessy ♡ Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-bg: #ffe9f1;
+    --pink-card: #fff5f9;
+    --pink-main: #ff9fc4;
+    --pink-deep: #ff6fa5;
+    --pink-line: #ffc2dc;
+    --cream: #fffaf6;
+    --choco: #6b4550;
+    --gold: #ffd45e;
+    --mint: #b6f2d1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--pink-bg);
+    background-image:
+      radial-gradient(circle at 10% 15%, #ffd6e8 0%, transparent 35%),
+      radial-gradient(circle at 90% 10%, #ffe0ee 0%, transparent 30%),
+      radial-gradient(circle at 50% 90%, #ffd6e8 0%, transparent 40%);
+    font-family: 'Baloo 2', sans-serif;
+    color: var(--choco);
+    overflow-x: hidden;
+  }
+  .paw{
+    position:absolute;
+    opacity:0.35;
+    pointer-events:none;
+  }
+
+  /* Bow SVG used as the signature motif */
+  .bow-mark{ width:34px; height:34px; display:inline-block; vertical-align:middle;}
+
+  header.hero{
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding: 40px 20px;
+  }
+  .ears{
+    position:relative;
+    width:150px; height:75px;
+    margin-bottom:-10px;
+  }
+  .ear{
+    position:absolute;
+    width:70px; height:70px;
+    background: var(--cream);
+    border-radius:50%;
+    border: 4px solid var(--pink-deep);
+    top:0;
+  }
+  .ear.left{ left:0; }
+  .ear.right{ right:0; }
+  .ear::after{
+    content:"";
+    position:absolute;
+    width:34px; height:34px;
+    background: var(--pink-main);
+    border-radius:50%;
+    top:16px; left:16px;
+  }
+
+  .face-card{
+    background: var(--cream);
+    border: 4px solid var(--pink-deep);
+    border-radius: 40px;
+    padding: 46px 38px 38px;
+    max-width: 480px;
+    box-shadow: 0 18px 0 -6px var(--pink-line), 0 20px 40px rgba(255,111,165,0.25);
+    position:relative;
+  }
+  .whiskers{
+    position:absolute;
+    top:52%;
+    width:60px;
+    height:2px;
+    background: var(--pink-deep);
+    opacity:0.5;
+  }
+  .whiskers.l1{ left:-55px; top:48%; transform:rotate(-6deg);}
+  .whiskers.l2{ left:-55px; top:56%; transform:rotate(6deg);}
+  .whiskers.r1{ right:-55px; top:48%; transform:rotate(6deg);}
+  .whiskers.r2{ right:-55px; top:56%; transform:rotate(-6deg);}
+
+  h1.name{
+    font-family:'Comfortaa', cursive;
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    color: var(--pink-deep);
+    letter-spacing: 1px;
+  }
+  .nickname{
+    font-size:1.1rem;
+    color: var(--choco);
+    margin-top:6px;
+    font-weight:600;
+  }
+  .tagline{
+    margin-top: 14px;
+    font-size: 1rem;
+    color: var(--choco);
+    opacity:0.85;
+  }
+
+  .voice-btn{
+    margin-top: 26px;
+    background: var(--pink-deep);
+    color: white;
+    border:none;
+    padding: 14px 26px;
+    border-radius: 30px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size: 1rem;
+    cursor:pointer;
+    box-shadow: 0 6px 0 #d94b83;
+    transition: transform 0.12s ease;
+  }
+  .voice-btn:active{
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #d94b83;
+  }
+  .voice-btn:hover{ background:#ff5c98; }
+  .voice-status{
+    margin-top:10px;
+    font-size:0.85rem;
+    min-height: 1.2em;
+    color: var(--pink-deep);
+  }
+
+  .scroll-cue{
+    margin-top: 40px;
+    font-size:0.85rem;
+    color: var(--pink-deep);
+    animation: bob 1.6s infinite ease-in-out;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0);}
+    50%{ transform: translateY(8px);}
+  }
+
+  section{
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 70px 24px;
+    position:relative;
+  }
+
+  .section-title{
+    font-family:'Comfortaa', cursive;
+    font-size: 1.6rem;
+    color: var(--pink-deep);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 26px;
+  }
+
+  .card{
+    background: var(--pink-card);
+    border: 3px solid var(--pink-line);
+    border-radius: 26px;
+    padding: 28px 26px;
+    box-shadow: 0 8px 0 -3px var(--pink-line);
+  }
+
+  .about-text{ line-height:1.75; font-size:1.02rem; }
+  .about-text b{ color: var(--pink-deep); }
+
+  .edu-item{
+    display:flex;
+    gap:16px;
+    padding: 16px 0;
+    border-bottom: 2px dashed var(--pink-line);
+  }
+  .edu-item:last-child{ border-bottom:none; }
+  .edu-badge{
+    flex-shrink:0;
+    width:46px; height:46px;
+    background: var(--pink-main);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:white; font-weight:700;
+    font-family:'Comfortaa', cursive;
+    font-size:0.95rem;
+  }
+  .edu-title{ font-weight:700; color:var(--choco); }
+  .edu-sub{ font-size:0.9rem; opacity:0.8; margin-top:2px;}
+  .edu-score{
+    margin-top:6px;
+    display:inline-block;
+    background: var(--gold);
+    color:#6b4a00;
+    font-weight:700;
+    font-size:0.8rem;
+    padding: 3px 12px;
+    border-radius:20px;
+  }
+
+  .hobby-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:18px;
+  }
+  .hobby-card{
+    background: var(--pink-card);
+    border: 3px solid var(--pink-line);
+    border-radius: 22px;
+    padding: 22px 18px;
+    text-align:center;
+    transition: transform 0.2s ease;
+  }
+  .hobby-card:hover{ transform: translateY(-6px) rotate(-1deg); }
+  .hobby-emoji{ font-size: 2.1rem; }
+  .hobby-name{ font-weight:700; margin-top:8px; color:var(--pink-deep); }
+  .hobby-desc{ font-size:0.85rem; margin-top:4px; opacity:0.8; }
+
+  .personality-tags{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;
+  }
+  .tag{
+    background: var(--mint);
+    color: #1f6b45;
+    font-weight:700;
+    font-size:0.82rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 2px solid #8fdcb2;
+  }
+
+  footer{
+    text-align:center;
+    padding: 60px 24px 80px;
+  }
+  .insta-card{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background: linear-gradient(135deg, #ff9fc4, #ffd45e);
+    padding: 16px 30px;
+    border-radius: 30px;
+    color:white;
+    font-weight:700;
+    text-decoration:none;
+    box-shadow: 0 8px 0 -2px #e88fb0;
+    font-size:1rem;
+  }
+  .insta-card:hover{ filter:brightness(1.05); }
+  .footer-note{
+    margin-top: 20px;
+    font-size:0.85rem;
+    color: var(--choco);
+    opacity:0.7;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .scroll-cue, .hobby-card{ animation:none; transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="paw" style="top:8%; left:6%; width:40px;" viewBox="0 0 100 100" fill="#ff6fa5"><circle cx="50" cy="65" r="22"/><circle cx="25" cy="35" r="12"/><circle cx="50" cy="20" r="12"/><circle cx="75" cy="35" r="12"/></svg>
+  <svg class="paw" style="top:20%; right:8%; width:30px;" viewBox="0 0 100 100" fill="#ffd45e"><circle cx="50" cy="65" r="22"/><circle cx="25" cy="35" r="12"/><circle cx="50" cy="20" r="12"/><circle cx="75" cy="35" r="12"/></svg>
+  <svg class="paw" style="bottom:10%; left:12%; width:26px;" viewBox="0 0 100 100" fill="#ff9fc4"><circle cx="50" cy="65" r="22"/><circle cx="25" cy="35" r="12"/><circle cx="50" cy="20" r="12"/><circle cx="75" cy="35" r="12"/></svg>
+
+  <div class="ears">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
+  </div>
+
+  <div class="face-card">
+    <div class="whiskers l1"></div>
+    <div class="whiskers l2"></div>
+    <div class="whiskers r1"></div>
+    <div class="whiskers r2"></div>
+
+    <h1 class="name">Jessica Sherin</h1>
+    <div class="nickname">✿ call me “Jessy” ✿</div>
+    <p class="tagline">BSc IT student · Erode · foodie · demon slayer fan</p>
+
+    <button class="voice-btn" id="voiceBtn">▶ Play my intro</button>
+    <div class="voice-status" id="voiceStatus"></div>
+  </div>
+
+  <div class="scroll-cue">↓ scroll down ↓</div>
+</header>
+
+<section id="about">
+  <div class="section-title">
+    <svg class="bow-mark" viewBox="0 0 100 60"><path d="M50 30 L10 10 Q0 30 10 50 Z" fill="#ff6fa5"/><path d="M50 30 L90 10 Q100 30 90 50 Z" fill="#ff6fa5"/><circle cx="50" cy="30" r="9" fill="#ffd45e"/></svg>
+    About me
+  </div>
+  <div class="card about-text">
+    Hi! I'm <b>Jessica Sherin</b>, but everyone around me calls me <b>Jessy</b>. I'm from <b>Erode</b>, and right now I'm in my <b>1st year of BSc Information Technology</b> at <b>R.D. National College</b>. I did my schooling at <b>Prasanthi Vidhya Bhavan</b>. I'd call myself a little <b>introverted</b> at first, but once I open up, I talk a lot with my close friend circle 💬. I'm also a <b>big foodie</b> 🍜 and a huge fan of the anime <b>Demon Slayer</b> ⚔️.
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-title">
+    <svg class="bow-mark" viewBox="0 0 100 60"><path d="M50 30 L10 10 Q0 30 10 50 Z" fill="#ff6fa5"/><path d="M50 30 L90 10 Q100 30 90 50 Z" fill="#ff6fa5"/><circle cx="50" cy="30" r="9" fill="#ffd45e"/></svg>
+    Education
+  </div>
+  <div class="card">
+    <div class="edu-item">
+      <div class="edu-badge">10</div>
+      <div>
+        <div class="edu-title">Prasanthi Vidhya Bhavan</div>
+        <div class="edu-sub">Class 10th</div>
+        <div class="edu-score">Scored 382</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-badge">12</div>
+      <div>
+        <div class="edu-title">Prasanthi Vidhya Bhavan</div>
+        <div class="edu-sub">Class 12th</div>
+        <div class="edu-score">Scored 323</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-badge">UG</div>
+      <div>
+        <div class="edu-title">R.D. National College</div>
+        <div class="edu-sub">BSc Information Technology — 1st Year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hobbies">
+  <div class="section-title">
+    <svg class="bow-mark" viewBox="0 0 100 60"><path d="M50 30 L10 10 Q0 30 10 50 Z" fill="#ff6fa5"/><path d="M50 30 L90 10 Q100 30 90 50 Z" fill="#ff6fa5"/><circle cx="50" cy="30" r="9" fill="#ffd45e"/></svg>
+    What I love
+  </div>
+  <div class="hobby-grid">
+    <div class="hobby-card">
+      <div class="hobby-emoji">🍜</div>
+      <div class="hobby-name">Foodie</div>
+      <div class="hobby-desc">Always up for trying new food</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-emoji">⚔️</div>
+      <div class="hobby-name">Demon Slayer</div>
+      <div class="hobby-desc">My favourite anime, no contest</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-emoji">💻</div>
+      <div class="hobby-name">Tech / IT</div>
+      <div class="hobby-desc">Learning BSc IT and growing</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-emoji">👭</div>
+      <div class="hobby-name">Close friends</div>
+      <div class="hobby-desc">Quiet around new people, chatty with my circle</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px;">
+    <div style="font-weight:700; color:var(--pink-deep); margin-bottom:6px;">A little about my personality</div>
+    <div class="personality-tags">
+      <span class="tag">Introvert 🌙</span>
+      <span class="tag">Loyal friend 💗</span>
+      <span class="tag">Anime lover 🎬</span>
+      <span class="tag">Foodie 🍡</span>
+      <span class="tag">Student 📚</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="section-title" style="justify-content:center;">
+    <svg class="bow-mark" viewBox="0 0 100 60"><path d="M50 30 L10 10 Q0 30 10 50 Z" fill="#ff6fa5"/><path d="M50 30 L90 10 Q100 30 90 50 Z" fill="#ff6fa5"/><circle cx="50" cy="30" r="9" fill="#ffd45e"/></svg>
+    Find me
+  </div>
+  <a class="insta-card" href="https://www.instagram.com/__pretty._.lioness" target="_blank" rel="noopener noreferrer">
+    📸 @__pretty._.lioness
+  </a>
+  <div class="footer-note">Made with ♡ — Jessy's little corner of the internet</div>
+</footer>
+
+<script>
+  const btn = document.getElementById('voiceBtn');
+  const status = document.getElementById('voiceStatus');
+  const introText = "Hi! I'm Jessica Sherin, but you can call me Jessy. I'm from Erode, and I'm currently studying first year B S c I T at R D National College. I did my schooling at Prasanthi Vidhya Bhavan. I'm a bit of an introvert, but I love talking with my close friends. I'm a total foodie, and Demon Slayer is my favourite anime. Thanks for visiting my little portfolio!";
+
+  function pickFemaleVoice(){
+    const voices = speechSynthesis.getVoices();
+    if(!voices.length) return null;
+    const preferred = voices.find(v => /female/i.test(v.name)) ||
+                       voices.find(v => /zira|samantha|victoria|susan|karen|moira|tessa|google uk english female|google us english/i.test(v.name)) ||
+                       voices.find(v => v.name.toLowerCase().includes('female')) ||
+                       voices[0];
+    return preferred;
+  }
+
+  let voicesReady = false;
+  speechSynthesis.onvoiceschanged = () => { voicesReady = true; };
+
+  btn.addEventListener('click', () => {
+    if (!('speechSynthesis' in window)) {
+      status.textContent = "Sorry, your browser doesn't support voice playback 🥺";
+      return;
+    }
+    speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(introText);
+    const voice = pickFemaleVoice();
+    if (voice) utter.voice = voice;
+    utter.pitch = 1.15;
+    utter.rate = 0.98;
+    status.textContent = "Playing intro… 🎀";
+    utter.onend = () => { status.textContent = "That's me! 💕"; };
+    utter.onerror = () => { status.textContent = "Oops, couldn't play the voice."; };
+    speechSynthesis.speak(utter);
+  });
+</script>
+
+</body>
+</html>
